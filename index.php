@@ -22,7 +22,7 @@ require ("connect.php");
 
 	<div>
 		
-		<h3>Enfants Inscrits</h3><button onclick="self.location.href='form.php'">Ajouter nouvel enfant</button>
+		<h3>Enfants Inscrits</h3><button onclick="self.location.href='registration_form.php'">Ajouter nouvel enfant</button>
 		<table class="table table-striped table-dark">
 			  <thead>
 			    <tr>
@@ -33,7 +33,10 @@ require ("connect.php");
 			    </tr>
 			  </thead>
 			  <tbody>
+
+<!-- INSERT  DATA CHILDREN FROM DATABASE INTO TABLE -->
 <?php
+
 	$children = $db->query('SELECT * FROM children');
 	            
 
@@ -70,7 +73,7 @@ $children->closeCursor(); // end and close the request children
 
 	<div>
 		
-		<h3>Liste des Activités</h3>
+		<h3>Liste des Activités</h3><button onclick="self.location.href='add_activity.php'">Ajouter Activité</button>
 
 		<table class="table table-striped table-dark">
 			  <thead>

@@ -13,10 +13,7 @@
 </head>
 <body>
 
-<?php
-?>
-
-<!-- FORMULAIRE D'INSCRIPTION -->
+<!-- REGISTRATION FORM -->
   
   <div class="card">
     <div class="card-body">
@@ -28,36 +25,37 @@
         <label>Adresse de l'enfant : </label><input type="text" name="children_adress">
         <label>Contacts des Parents : </label><input type="text" name="children_parents_contact">
         <textarea  name="children_remarks">Remarques particulieres : </textarea>
-         <input class="btn btn-success" type="submit" value="ok" name="ok" />
-
-</form>
-  </div>
+        <input class="btn btn-success" type="submit" value="ok" name="ok" />
+    </form>
     </div>
+  </div>
+
+<!-- REQUEST TO SEND DATAS REGISTRATION TO DATABASE -->
 <?php
 
 require ("connect.php");
+
 if (isset ($_POST["ok"]))
 {
 
   $children_lastname = $_POST ['children_lastname'];
-$children_firstname = $_POST ['children_firstname'];
-$children_birthday = $_POST['children_birthday'];
-$children_adress = $_POST ['children_adress']; 
-$children_parents_contact = $_POST ['children_parents_contact'];
-$children_remarks = $_POST ['children_remarks'];
-var_dump($children_firstname);
-    $db->query(
-      'INSERT INTO children(children_firstname,children_lastname,children_birthday,children_adress,children_parents_contact,children_remarks) 
-      VALUES ("'.$children_lastname.'","'.$children_firstname.'","'.$children_birthday.'","'.$children_adress.'","'.$children_parents_contact.'","'.$children_remarks.'")
+  $children_firstname = $_POST ['children_firstname'];
+  $children_birthday = $_POST['children_birthday'];
+  $children_adress = $_POST ['children_adress']; 
+  $children_parents_contact = $_POST ['children_parents_contact'];
+  $children_remarks = $_POST ['children_remarks'];
 
-    ');
-//header("Location: index.php");
-  // var_dump($newform);
-  //   $newform->execute();
-  //   var_dump($children_lastname);
+var_dump($children_firstname);
+
+  $db->query(
+      'INSERT INTO children(children_firstname,children_lastname,children_birthday,children_adress,children_parents_contact,children_remarks) 
+      VALUES ("'.$children_lastname.'","'.$children_firstname.'","'.$children_birthday.'","'.$children_adress.'","'.$children_parents_contact.'","'.$children_remarks.'")'
+
+    );
+header("Location: index.php");
+  
 };
-// $newform->closeCursor();
-// echo "ok";
+
 ?> 
 </body>
 </html>
